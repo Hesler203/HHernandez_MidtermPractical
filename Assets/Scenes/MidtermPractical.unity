@@ -465,7 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23ca72fb5c0bbe40acfb9b2f48a69a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  cameraSpeed: 5
+  cameraSpeed: 6
   playerPosition: {fileID: 922450640}
 --- !u!1 &337627360
 GameObject:
@@ -718,6 +718,8 @@ MonoBehaviour:
   - {fileID: 641008240}
   - {fileID: 620165171}
   - {fileID: 1279126163}
+  spawnInterval: 10
+  maxObastaclesAllowed: 20
 --- !u!4 &530750193
 Transform:
   m_ObjectHideFlags: 0
@@ -1251,7 +1253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce209b58498c2024eae7d6f80f05c375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  health: 0
+  health: 50
 --- !u!1 &1068322496
 GameObject:
   m_ObjectHideFlags: 0
