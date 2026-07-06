@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Coin
   rotationSpeed: 50
-  bobbingSpeed: 10
-  bobbMinHeight: 0.5
-  bobbMaxHeight: 3
+  bobbingSpeed: 0.5
+  bobbMinHeight: 0.75
+  bobbMaxHeight: 1.25
   pointValue: 1

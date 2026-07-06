@@ -6,22 +6,32 @@ public class Coin : MonoBehaviour
     [SerializeField] private float bobbingSpeed;
     [SerializeField] private float bobbMinHeight;
     [SerializeField] private float bobbMaxHeight;
+    private bool directionFlip;
     [SerializeField] private int pointValue;
 
     void Update()
     {
         transform.Rotate(0, rotationSpeed * Time.deltaTime, 0, Space.Self);
+        HandleBobb();
+    }
+
+    private void HandleBobb()
+    {
+        if (transform.position.y > bobbMaxHeight)
+        {
+            directionFlip = true;
+        }
         if (transform.position.y < bobbMinHeight)
         {
-            DoBobb(Vector3.up);
+            directionFlip = false;
         }
-        else if (transform.position.y > bobbMaxHeight)
+        if (!directionFlip)
         {
-            DoBobb(Vector3.down);
+            DoBobb(Vector3.up);
         }
         else
         {
-            DoBobb(Vector3.up);
+            DoBobb(Vector3.down);
         }
     }
 
@@ -36,6 +46,6 @@ public class Coin : MonoBehaviour
 
     private void DoBobb(Vector3 direction)
     {
-        transform.Translate(direction * bobbingSpeed * Time.deltaTime, Space.World);
+        transform.Translate(direction * bobbingSpeed * Time.deltaTime, Space.Self);
     }
 }
