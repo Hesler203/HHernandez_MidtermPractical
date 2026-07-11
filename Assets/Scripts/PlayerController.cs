@@ -5,8 +5,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private float horizontalInput;
     private float depthInput;
-    [SerializeField] private float speed;
     [SerializeField] private float maxSpeed;
+    [SerializeField] private float runForce;
     [SerializeField] private float jumpForce;
     [SerializeField] private float gravityMultiplier;
     private bool grounded;
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         if (grounded)
         {
             Vector3 moveDirection = new Vector3(horizontalInput, 0, depthInput).normalized;
-            rb.AddRelativeForce(moveDirection * speed, ForceMode.Acceleration);
+            rb.AddRelativeForce(moveDirection * runForce, ForceMode.Acceleration);
         }
     }
 
@@ -55,7 +55,5 @@ public class PlayerController : MonoBehaviour
         {
             grounded = true;
         }
-
     }
-
 }

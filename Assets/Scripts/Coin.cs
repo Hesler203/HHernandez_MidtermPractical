@@ -40,6 +40,7 @@ public class Coin : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             FindAnyObjectByType<ScoreManager>().IncreaseScore(pointValue);
+            FindAnyObjectByType<CoinSpawner>().DecreaseCoinCount();
             Destroy(this.gameObject);
         }
     }

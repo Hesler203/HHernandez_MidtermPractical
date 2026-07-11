@@ -8,10 +8,8 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        mouseInput = new Vector3(-Input.mousePositionDelta.x, 0, 0).normalized;
+        mouseInput = new Vector3(-Input.mousePositionDelta.x, -Input.mousePositionDelta.y, 0).normalized;
         transform.Translate(mouseInput * cameraSpeed * Time.deltaTime);
         transform.LookAt(playerPosition, Vector3.up);
     }
-
-
 }
