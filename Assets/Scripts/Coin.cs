@@ -9,12 +9,20 @@ public class Coin : MonoBehaviour
     private bool directionFlip;
     [SerializeField] private int pointValue;
 
+    /// <summary>
+    /// Rotates the coin around its local y-axis at a constant speed
+    /// and bobbs up & down between every frame.
+    /// </summary>
     void Update()
     {
         transform.Rotate(0, rotationSpeed * Time.deltaTime, 0, Space.Self);
         HandleBobb();
     }
 
+    /// <summary>
+    /// Passes the direction vector to DoBobb. The direction flips between moving up or down
+    /// based on the coin's position relative to the Bobbing min & max heights.
+    /// </summary>
     private void HandleBobb()
     {
         if (transform.position.y > bobbMaxHeight)
@@ -35,6 +43,20 @@ public class Coin : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Moves the coin at a constant speed in the direction passed in.
+    /// </summary>
+    /// <param name="direction">vector in which to move</param>
+    private void DoBobb(Vector3 direction)
+    {
+        transform.Translate(direction * bobbingSpeed * Time.deltaTime, Space.Self);
+    }
+
+    /// <summary>
+    /// When the player object enters this coin's trigger range, increase the score by this coin's value,
+    /// decrease the current coin count, and destroy this coin.
+    /// </summary>
+    /// <param name="other">the collider component that entered the trigger range of this coin</param>
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -43,10 +65,5 @@ public class Coin : MonoBehaviour
             FindAnyObjectByType<CoinSpawner>().DecreaseCoinCount();
             Destroy(this.gameObject);
         }
-    }
-
-    private void DoBobb(Vector3 direction)
-    {
-        transform.Translate(direction * bobbingSpeed * Time.deltaTime, Space.Self);
     }
 }
